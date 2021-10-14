@@ -1,0 +1,14 @@
+{
+    "print": "print",
+    "input": "input",
+    "if": "if",
+    "elif": "elif",
+    "else": "else",
+    "while": "while",
+    "operators": [{
+        "equal": "==",
+        "difference": "!=",
+        "and": "and",
+        "or": "or"
+    }]
+}

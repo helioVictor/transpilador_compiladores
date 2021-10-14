@@ -5,7 +5,6 @@ class FileHandler:
     def readFile(self):
         with open(f'{self.filename}.txt') as file:
             lines = file.readlines()
-            print(lines)
         return lines
     
     def writeFile(self, fileLines = ['print("Jefter")\n', 'print("Tiago")\n']):

@@ -1,0 +1,9 @@
+{
+    "print": "escreval",
+    "variable": "variavel",
+    "input": "leia",
+    "if": "se",
+    "elif": "senao se",
+    "else": "senao",
+    "while": "enquanto"
+}

@@ -20,15 +20,15 @@
 
  ### Entrada 
   ```
-   leia(variavel)
+   leia ( variavel )
   ```
  ### Saída 
   ```
-   escreval('Exemplo')
+   escreval ( 'Exemplo' )
   ```
  ### Atribuição 
  ```
-  variavel <- 10
+  variavel exemplo = 10
  ```
  ### Operadores aritméticos 
  ```
@@ -46,19 +46,19 @@
  ```
  ### Condicionais 
   ```
-   se(valor == 10) {
-    escreval('O valor e 10')
+   se ( valor == 10 ) {
+    escreval ( 'O valor e 10' )
    }
-   senao se(valor < 10) {
-    escreval('valor menor que 10')
+   senao se ( valor < 10 ) {
+    escreval ( 'valor menor que 10' )
    }
    senao {
-    escreval('valor nao conhecido')
+    escreval ( 'valor nao conhecido ')
    }
   ```
  ### Laço de repetição 
   ```
-   enquanto(valor < 10) {
-    escreval(valor)
+   enquanto ( valor < 10 ) {
+    escreval ( valor )
    }
   ```
