@@ -2,6 +2,11 @@ class FileHandler:
     def __init__(self, filename='example'):
         self.filename = filename
 
+    def readWholeFile(self):
+        with open(f'{self.filename}.txt', mode='r') as file:
+            lines = file.read()
+        return lines
+
     def readFile(self):
         with open(f'{self.filename}.txt') as file:
             lines = file.readlines()

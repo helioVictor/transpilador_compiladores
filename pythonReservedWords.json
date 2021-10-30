@@ -5,10 +5,10 @@
     "elif": "elif",
     "else": "else",
     "while": "while",
-    "operators": [{
+    "operators": {
         "equal": "==",
         "difference": "!=",
         "and": "and",
         "or": "or"
-    }]
+    }
 }

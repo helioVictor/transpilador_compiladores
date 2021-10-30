@@ -39,20 +39,15 @@ def handleTokensConversion(
             destinationTokens.append(' = ')
             destinationTokens.append(pythonReservedWords['input'] + '()' + '\n')
         if(sourceTokens[index-1] == portugolReservedWords['print']):
-            destinationTokens.append(pythonReservedWords['print'] + f'({sourceTokens[index]})' + '\n')
+            destinationTokens.append(pythonReservedWords['print'] + f'({sourceTokens[index]})' + '\n') 
         if(
-            sourceTokens[index] == portugolReservedWords['if'] and
-            sourceTokens[index+4] == '{'
+            sourceTokens[index + 1] == 'e' or
+            sourceTokens[index + 1] == 'ou' or
+            sourceTokens[index + 1] == 'diferente' or
+            sourceTokens[index + 1] == 'igual'
         ):  
-            if(
-                    sourceTokens[index + 2] == 'e' or
-                    sourceTokens[index + 2] == 'ou' or
-                    sourceTokens[index + 2] == 'diferente' or
-                    sourceTokens[index + 2] == 'igual'
-            ):  
-                destinationTokens.append(f'{sourceTokens[index + 2]}')
-                destinationTokens.append(f' {handleOperatorsChoice(sourceTokens[index + 3], pythonReservedWords)} ')
-                destinationTokens.append(f'{sourceTokens[index + 4]}\n')
-                # Fazer um while pra saber quantas casas tem antes do }
+            destinationTokens.append(f'{sourceTokens[index]}')
+            destinationTokens.append(f' {handleOperatorsChoice(sourceTokens[index + 1], pythonReservedWords)} ')
+            destinationTokens.append(f'{sourceTokens[index + 2]}\n')
 
     return destinationTokens
