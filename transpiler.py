@@ -1,15 +1,13 @@
 import json
 from FileHandler import FileHandler
-from helpers import organizeBrackets, tokenizer, symbolsDictionary, findAll
+from helpers import tokenizer, getBlocks, getKeywordsPosition
 from converters import handleTokensConversion
 
 def transpiler(sourceFile, destinationFile):
     # print(f'source file: {sourceFile}')
     # print(f'O que tem no arquivo fonte: {sourceFile.readFile()}')
-    source = sourceFile.readWholeFile()
-    print(source)
-    symbols = symbolsDictionary(['{', '}', '(', ')'], source)
-    print(symbols)
+    # source = sourceFile.readWholeFile()
+    # print(source)
     # closeBracket = findAll('}', source)
     # print(closeBracket)
     # print(symbols['{'][0])
@@ -18,11 +16,8 @@ def transpiler(sourceFile, destinationFile):
     # print(symbols[')'][0])
     #  print(symbols[0]['{'][0])
     # print(symbols[1]['}'][0])
-    sourceTokens = tokenizer(sourceFile.readFile())
-    # sourceBrackets = organizeBrackets(sourceTokens)
-    destinationTokens = []
 
-    print(sourceFile)
+    # print(sourceFile)
 
     portugolReservedWordsFile = open('portugolReservedWords.json')
     pythonReservedWordsFile = open('pythonReservedWords.json')
@@ -30,8 +25,23 @@ def transpiler(sourceFile, destinationFile):
     portugolReservedWords = json.load(portugolReservedWordsFile)
     pythonReservedWords = json.load(pythonReservedWordsFile)
 
-    # print(sourceTokens)
-    handleTokensConversion(sourceTokens, destinationTokens, portugolReservedWords, pythonReservedWords)
+    sourceTokens = tokenizer(sourceFile.readFile(), portugolReservedWords, pythonReservedWords)
+    print(sourceTokens)
+    print(getKeywordsPosition(sourceTokens))
+    blocksArray = getBlocks(sourceTokens)
+    keywordsPositions = getKeywordsPosition(sourceTokens)
+    print(blocksArray)
+    # sourceBrackets = organizeBrackets(sourceTokens)
+    destinationTokens = []
+
+    handleTokensConversion(
+        sourceTokens,
+        destinationTokens,
+        portugolReservedWords,
+        pythonReservedWords,
+        keywordsPositions,
+        blocksArray
+    )
     
     print(destinationTokens)
     destinationFile.writeFile(destinationTokens)

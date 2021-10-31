@@ -10,5 +10,9 @@
         "difference": "!=",
         "and": "and",
         "or": "or"
-    }
+    },
+    "boolean": {
+        "true": "True",
+        "false": "False"
+    }   
 }

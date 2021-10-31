@@ -3,7 +3,17 @@
     "variable": "variavel",
     "input": "leia",
     "if": "se",
-    "elif": "senao se",
+    "elif": "senaose",
     "else": "senao",
-    "while": "enquanto"
+    "while": "enquanto",
+    "operators": {
+        "equal": "igual",
+        "difference": "diferente",
+        "and": "e",
+        "or": "ou"
+    },
+    "boolean": {
+        "true": "verdadeiro",
+        "false": "falso"
+    }
 }
