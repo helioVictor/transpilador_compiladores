@@ -57,7 +57,6 @@ def handleTokenVerification(token, portugolReservedWords, pythonReservedWords):
     return token
 
 def handleTokenManipulation(token, portugolReservedWords, pythonReservedWords):
-    # print(f'TOKEN: {token}')
     if token == '':
         return token
     if (
@@ -65,22 +64,16 @@ def handleTokenManipulation(token, portugolReservedWords, pythonReservedWords):
         token[0] + token[-1] == "''"
     ):  
         token = token.replace('$', ' ')
-        # print(f'depois{token}')
-        # print(token.find('{')  == 1)
-        # print(token.find('}'))
-        if token.find('{')  == 1 and token.find('}') == 1:
+        if token.find('{')  != -1 and token.find('}') != -1:
             return 'f' + token
         return token
-    # print(f'TOKEAN: {token}')
     return handleTokenVerification(token, portugolReservedWords, pythonReservedWords)
 
 
 def handleSpacesCount(LinesArray, splitter = ' '):
     spacesArray = []
     for line in LinesArray:
-        # print(line)
         lineArray = line.replace('\n', '')
-        # print(lineArray)
         spaceCounter = 0
         for token in lineArray:
             if token != ' ':
@@ -95,15 +88,11 @@ def tokenizer(LinesArray, portugolReservedWords, pythonReservedWords, spacesArra
     tokensWithoutSpaces = []
     for index in range(len(LinesArray)):
         lineArray = LinesArray[index].replace('\n', '').split(splitter)
-        # print(f'1 - indexxx: {index} = {lineArray[spacesArray[index]]}')
-        print(lineArray)
-        lineArray[spacesArray[index]] = handleTokenManipulation(lineArray[spacesArray[index]], portugolReservedWords, pythonReservedWords)
-        print(f'bla{lineArray[spacesArray[index]]}')
-        print(spacesArray[index])
-        # print(f'blaa{lineArray[spacesArray[index]]}')
+        lineArray[spacesArray[index]] = handleTokenManipulation(lineArray[spacesArray[index]], 
+                                                                portugolReservedWords,
+                                                                pythonReservedWords)
         
         if (lineArray[spacesArray[index]] == portugolReservedWords['variable']):
-            # print(f'AHHHHHH{lineArray[spacesArray[index]]}')
             lineArray[spacesArray[index] + 1] = (' ' * spacesArray[index]) + lineArray[spacesArray[index] + 1]
         if (lineArray[spacesArray[index]] == pythonReservedWords['input']):
             
@@ -114,25 +103,22 @@ def tokenizer(LinesArray, portugolReservedWords, pythonReservedWords, spacesArra
             ):  
                 lineArray[spacesArray[index] + 2] = (' ' * spacesArray[index]) + lineArray[spacesArray[index] + 2]
             else:
-                print(f'bebebeb:  {spacesArray[index]}')
                 lineArray[spacesArray[index] + 1] = (' ' * spacesArray[index]) + lineArray[spacesArray[index] + 1]
 
         else:
             lineArray[spacesArray[index]] = (' ' * spacesArray[index]) + lineArray[spacesArray[index]]
-        # print(lineArray[spacesArray[index]])
         for index in range(len(lineArray)):
             if (
                 lineArray[index] != '' and
                 lineArray[index] != '}'
             ):  
-                # print(f'AHAAHAHH{lineArray[index]}')
-                lineArray[index] = handleTokenManipulation(lineArray[index], portugolReservedWords, pythonReservedWords)
-                # print(f'HEHEHEHE{lineArray[index]}')
+                lineArray[index] = handleTokenManipulation(lineArray[index],
+                                                            portugolReservedWords,
+                                                            pythonReservedWords)
                 if (lineArray[index] == '{'):
                     tokens.append(':\n')
                 else:
                     tokens.append(lineArray[index])
-        # print(f'2 - indexxx: {index} = {lineArray[spacesArray[index]]}')
     for token in tokens:
         tokensWithoutSpaces.append(removeSpaces(token))
 

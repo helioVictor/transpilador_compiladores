@@ -9,22 +9,22 @@
  - Sebastião Alves
 
 ## Funcionalidades
- - [ ] Entrada
- - [ ] Saída
- - [ ] Atribuição
- - [ ] Operadores aritméticos
- - [ ] Condicionais
- - [ ] Laço de repetição
+ - [x] Entrada
+ - [x] Saída
+ - [x] Atribuição
+ - [x] Operadores aritméticos
+ - [x] Condicionais
+ - [x] Laço de repetição
 
 ## Sintaxe Portugol
 
  ### Entrada 
   ```
-   leia ( variavel )
+   leia variavel
   ```
  ### Saída 
   ```
-   escreval ( 'Exemplo' )
+   escreval 'Exemplo'
   ```
  ### Atribuição 
  ```
@@ -33,32 +33,35 @@
  ### Operadores aritméticos 
  ```
   // Adicao
-   valor + valor2
+   variavel exemplo = valor + valor2
    
   // Subtracao
-   valor - valor2
+   variavel exemplo = valor - valor2
   
   // multiplicacao
-   valor * valor2
+   variavel exemplo = valor * valor2
   
   // divisao
-   valor / valor2
+   variavel exemplo = valor / valor2
+  
+  // potenciação
+   variavel exemplo = valor ** valor2
  ```
  ### Condicionais 
   ```
    se ( valor == 10 ) {
-    escreval ( 'O valor e 10' )
+    escreval 'O$valor$e$10'
    }
-   senao se ( valor < 10 ) {
-    escreval ( 'valor menor que 10' )
+   senaose ( valor < 10 ) {
+    escreval 'valor$menor$que$10'
    }
    senao {
-    escreval ( 'valor nao conhecido ')
+    escreval 'valor$nao$conhecido'
    }
   ```
  ### Laço de repetição 
   ```
    enquanto ( valor < 10 ) {
-    escreval ( valor )
+    escreval valor
    }
   ```

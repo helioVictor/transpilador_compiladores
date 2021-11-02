@@ -19,6 +19,6 @@
     "types": {
         "int": "inteiro",
         "float": "real",
-        "str": "string"
+        "str": "caractere"
     }
 }
