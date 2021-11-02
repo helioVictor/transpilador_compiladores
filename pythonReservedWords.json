@@ -14,5 +14,10 @@
     "boolean": {
         "true": "True",
         "false": "False"
-    }   
+    },
+    "types": {
+        "int": "int",
+        "float": "float",
+        "str": "str"
+    }
 }

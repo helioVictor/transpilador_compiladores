@@ -1,6 +1,6 @@
 import json
 from FileHandler import FileHandler
-from helpers import tokenizer, getBlocks, getKeywordsPosition
+from helpers import tokenizer, getBlocks, getKeywordsPosition, handleSpacesCount
 from converters import handleTokensConversion
 
 def transpiler(sourceFile, destinationFile):
@@ -25,17 +25,23 @@ def transpiler(sourceFile, destinationFile):
     portugolReservedWords = json.load(portugolReservedWordsFile)
     pythonReservedWords = json.load(pythonReservedWordsFile)
 
-    sourceTokens = tokenizer(sourceFile.readFile(), portugolReservedWords, pythonReservedWords)
+    sourceTokensSpaces = handleSpacesCount(sourceFile.readFile())
+    sourceTokens, sourceTokensWithoutSpaces = tokenizer(sourceFile.readFile(), portugolReservedWords, pythonReservedWords, sourceTokensSpaces)
+    print(sourceTokensSpaces)
     print(sourceTokens)
-    print(getKeywordsPosition(sourceTokens))
-    blocksArray = getBlocks(sourceTokens)
-    keywordsPositions = getKeywordsPosition(sourceTokens)
-    print(blocksArray)
+    print('-----------------------')
+    print(f'ss: {sourceTokensWithoutSpaces}')
+    # print(getKeywordsPosition(sourceTokens))
+    blocksArray = getBlocks(sourceTokensWithoutSpaces)
+    keywordsPositions = getKeywordsPosition(sourceTokensWithoutSpaces)
+    # print(blocksArray)
+    # print(keywordsPositions)
     # sourceBrackets = organizeBrackets(sourceTokens)
     destinationTokens = []
 
     handleTokensConversion(
         sourceTokens,
+        sourceTokensWithoutSpaces,
         destinationTokens,
         portugolReservedWords,
         pythonReservedWords,

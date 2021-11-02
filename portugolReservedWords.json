@@ -15,5 +15,10 @@
     "boolean": {
         "true": "verdadeiro",
         "false": "falso"
+    },
+    "types": {
+        "int": "inteiro",
+        "float": "real",
+        "str": "string"
     }
 }
